@@ -35,7 +35,6 @@ list_dplayers = [{'player':'1','marker':'$','turn':'n'},{'player':'2','marker':'
 glb_play_mark = ['','','']
 iplayer =''
 
-
 # In[ ]:
 
 
@@ -294,15 +293,9 @@ def player_choice(board, player, iplayer):
 
             #print(glb_play_mark)
 
-
-
-
-
 # In[ ]:
 
-
 #player_choice(test_board, list_dplayers)
-
 
 # In[ ]:
 
@@ -361,7 +354,6 @@ def main_game():
 # **Step 9: Write a function that asks the player if they want to play again and returns a boolean True if they do want to play again.**
 
 # In[ ]:
-
 
 print('Welcome to Tic Tac Toe!')
 
