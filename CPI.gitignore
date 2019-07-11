@@ -1,8 +1,8 @@
 #Ignore files whose names end with a tilde, used by many text editors
 *~
 
-#Ignore all .pdf files
-*.pdf
+#Ignore all .archive files
+*.a
 
 AnotherTest/
 PleaseExclude/
