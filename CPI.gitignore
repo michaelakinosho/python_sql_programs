@@ -4,6 +4,5 @@
 #Ignore all .pdf files
 *.pdf
 
-Capstone-Project-Ideas\AnotherTest\*.*
-Capstone-Project-Ideas\PleaseExclude\*.*
-Capstone-Project-Ideas/PleaseExclude/*.*
+AnotherTest/
+PleaseExclude/
