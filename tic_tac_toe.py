@@ -352,9 +352,6 @@ def main_game():
 
 
 # **Step 9: Write a function that asks the player if they want to play again and returns a boolean True if they do want to play again.**
-
-# In[ ]:
-
 print('Welcome to Tic Tac Toe!')
 
 choose_first()
