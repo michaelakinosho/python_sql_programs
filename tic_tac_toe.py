@@ -324,9 +324,7 @@ def reset_game():
 
 #reset_game()
 
-
 # In[ ]:
-
 
 def main_game():
 
