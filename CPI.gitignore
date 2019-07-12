@@ -4,5 +4,6 @@
 #Ignore all .archive files
 *.a
 
-AnotherTest/
-PleaseExclude/
+#Was just testing the gitignore file
+#AnotherTest/
+#PleaseExclude/
