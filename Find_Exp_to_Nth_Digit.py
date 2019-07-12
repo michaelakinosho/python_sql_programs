@@ -14,23 +14,30 @@ from math import exp, expm1
 from decimal import *
 import os
 
-
-def pi_nth_digit():
+def e_nth_digit():
 
     print("PI is known as an irritational number.\nMeaning it can go to infinity.")
     print("This program will return a value of pi up to the number of digits you specify")
-    mPI = Decimal(0)
-    num_digits = 0
+    mExp = Decimal(0)
 
     try:
         num_digits = int(input("Number of decimal places for PI:"))
+
+        if num_digits > dec_limit:
+            num_digits = dec_limit
+        elif num_digits < 1:
+            num_digits = 1
+
+        mExp = Decimal(exp(1))
         getcontext().prec = num_digits
-        mPI = Decimal(22)/Decimal(7)
-        print(mPI)
-        return (mPI)
+        mExp = Decimal(mExp)*Decimal(1)
 
-    except ValueError:
-        print('Oops enter a number')
-        pi_nth_digit()
+        print(mExp)
+        return mExp
 
-pi_nth_digit()
+    except Exception:
+
+        print('Please enter a number')
+        e_nth_digit()
+
+e_nth_digit()
