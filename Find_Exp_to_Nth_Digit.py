@@ -8,7 +8,9 @@
 
 #limiting the number of decimal places pi can be returned for
 #even if user enters a number greater than 100
-dec_limit = 100
+
+#max number of decimal places returned value will have
+dec_limit = 20
 
 from math import exp, expm1
 from decimal import *
@@ -16,21 +18,21 @@ import os
 
 def e_nth_digit():
 
-    print("PI is known as an irritational number.\nMeaning it can go to infinity.")
-    print("This program will return a value of pi up to the number of digits you specify")
+    print("E is known as an irritational number.\nMeaning it can go to infinity.")
+    print("This program will return a value for E of an entered number and up to the number of digits you specify")
     mExp = Decimal(0)
 
     try:
-        num_digits = int(input("Number of decimal places for PI:"))
+        x = int(input("Find the exponent of this value: "))
+        num_digits = int(input("Number of decimal places for {}: ".format(x)))
 
-        if num_digits > dec_limit:
+        if num_digits < 1:
+            print('Please enter a number greater than zero')
+        elif num_digits > dec_limit:
             num_digits = dec_limit
-        elif num_digits < 1:
-            num_digits = 1
 
-        mExp = Decimal(exp(1))
         getcontext().prec = num_digits
-        mExp = Decimal(mExp)*Decimal(1)
+        mExp = Decimal(exp(x))*Decimal(1)
 
         print(mExp)
         return mExp

@@ -8,7 +8,7 @@
 
 #limiting the number of decimal places pi can be returned for
 #even if user enters a number greater than 100
-dec_limit = 100
+dec_limit = 20
 
 from math import exp, expm1
 from decimal import *
@@ -24,6 +24,12 @@ def pi_nth_digit():
 
     try:
         num_digits = int(input("Number of decimal places for PI:"))
+
+        if num_digits < 1:
+            print('Please enter a number greater than zero')
+        elif num_digits > dec_limit:
+            num_digits = dec_limit
+
         getcontext().prec = num_digits
         mPI = Decimal(22)/Decimal(7)
         print(mPI)
