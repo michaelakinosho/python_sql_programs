@@ -1,3 +1,7 @@
+#My signature and contact details
+#Written by: Michael Akinosho
+#Email: michaelakinosho@moaadvisory.com
+
 #Program will prompt user for a number
 #Will provide the user a list of prime factors for number entered
 

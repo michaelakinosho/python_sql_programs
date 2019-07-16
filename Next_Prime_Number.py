@@ -1,3 +1,6 @@
+#My signature and contact details
+#Written by: Michael Akinosho
+#Email: michaelakinosho@moaadvisory.com
 #Program will prompt the user for the prime number in the nth position
 #Afterwards will prompt user if the next prime number
 

@@ -1,3 +1,7 @@
+#My signature and contact details
+#Written by: Michael Akinosho
+#Email: michaelakinosho@moaadvisory.com
+
 #Program is designed to return pi to the number of decimal places the user specifies
 #Limiting the program to 100 decimal places
 
