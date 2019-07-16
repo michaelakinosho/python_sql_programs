@@ -3,7 +3,7 @@
 
 def num_prime_factors(n=1):
 
-    print("Let's find the Prime Factor Numbers")
+    print("Let's find the Prime Factors")
     n_list = []
     #print(n_list)
     #print(type(n_list))
