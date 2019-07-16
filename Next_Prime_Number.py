@@ -6,36 +6,29 @@ def next_prime_number(n):
     print("One is not considered a prime number.")
     print("One may be a prime :-)")
 
-    n_list = []
     #print(n_list)
     #print(type(n_list))
 
     #print(type(prime_set))
 
     fmod = 0
-    prime_num = 2
-    prime_set = set()
-    prime_set.add(prime_num)
+    #The first prime number is two
+    num = 2
+    prime_list = [num]
 
-    x = 0
-
-    while len(prime_set) < n:
+    num += 1
+    while len(prime_list) < n:
 #IF AT THE END OF THE FOR LOOP AND FMOD IS NOT ZERO, THEN THIS NUMBER IS A PRIME NUMBER
-    	fmod = n % prime_num
-    	if fmod == 0:
-    		prime_set.add(prime_num)
-    		factors_list.append(prime_num)
-    		n = n / prime_num
-    	else:
-    		prime_num += 1
-    		for y in prime_set:
-    			if prime_num % y != 0:
-    				break
-    	#print(x)
-    	x += 1
+        for y in prime_list:
+            fmod = num%y
+            if fmod == 0:
+                num += 1
+                break
+        if fmod != 0:
+            if num not in prime_list:
+                prime_list.append(num)
 
-    print(prime_set)
-    print(factors_list)
+    print(prime_list)
 
 def input_num():
     num_digits = 0
@@ -46,13 +39,18 @@ def input_num():
             print('Please try again and enter a positive integer')
             num_digits = int(input("Enter a positve integer to find it's prime factors: "))
 
-        num_prime_factors(num_digits)
+        next_prime_number(num_digits)
 
-        result = input('Find the next prime number?\nEnter Yes or No:').lower().[0]
+        result = input('Find the next prime number?\nEnter Yes or No:').lower()[0]
         while result == 'y':
             num_digits += 1
             print("The next prime number is: ")
             next_prime_number(num_digits)
+            result = input('Find the next prime number?\nEnter Yes or No:').lower()[0]
+
+        if result != 'y':
+                print('\nProgram is exiting.')
+                print("Thank you for testing the program.")
 
     except ValueError:
         print('Oops enter a whole number')
