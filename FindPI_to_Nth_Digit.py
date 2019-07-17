@@ -16,7 +16,7 @@ dec_limit = 20
 
 from math import exp, expm1
 from decimal import *
-import os
+#import os
 
 
 def pi_nth_digit():
@@ -34,8 +34,10 @@ def pi_nth_digit():
         elif num_digits > dec_limit:
             num_digits = dec_limit
 
-        getcontext().prec = num_digits
+        getcontext().prec = dec_limit
         mPI = Decimal(22)/Decimal(7)
+
+        mPI = round(mPI,num_digits)
         print(mPI)
         return (mPI)
 

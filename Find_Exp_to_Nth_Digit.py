@@ -35,15 +35,16 @@ def e_nth_digit():
         elif num_digits > dec_limit:
             num_digits = dec_limit
 
-        getcontext().prec = num_digits
+        getcontext().prec = dec_limit
         mExp = Decimal(exp(x))*Decimal(1)
+        mExp = round(mExp,num_digits)
 
         print(mExp)
         return mExp
 
     except Exception:
 
-        print('Please enter a number')
+        print('Hmm...Something went wrong, try a smaller value\nfor the exponent ')
         e_nth_digit()
 
 e_nth_digit()
