@@ -3,7 +3,7 @@
 #Email: michaelakinosho@moaadvisory.com
 #Let's figure out the cost of tiling a floor given its width, length and cost of one square tile
 
-def input_num():
+def floor_tiling_cost():
     flr_width = 0
     flr_length = 0
     cost_per_tile = 0
@@ -37,9 +37,9 @@ def input_num():
     except ValueError:
         print("Oops an incorrect value was entered!!")
         print("Values entered for width: {}, for length: {} and cost per tile: {}.".format(flr_width,flr_length,cost_per_tile))
-        input_num()
+        floor_tiling_cost()
 
     finally:
         print("Thank you!!")
 
-input_num()
+floor_tiling_cost()
