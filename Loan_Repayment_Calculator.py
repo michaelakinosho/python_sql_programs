@@ -5,8 +5,8 @@
 #Found this particular very interesting and doing the research on the formulas
 #Maybe it is the accountant in me
 
-def loan_repay_calc(p=0,r=0,t=1,prd=1):
-
+def loan_repay_calc(p=0,r=0,t=1,cptint=1):
+    print('principal: {}, rate: {}, term: {}, and compounding interval: {}'.format(p,r,t,cptint))
 
 #Like having a function that simply captures the inputs and subsequently calls the
 #function that will perform the calculations and produces the amortization schedule
@@ -18,6 +18,7 @@ def input_num():
 
     #Compounding interval; 1 for Daily, 2 for Weekly, 3 for Monthly and 4 for Continuously
     interval = int(0)
+    internal_lst = [1,2,3,4]
 
     try:
         principal = float(input("Enter a positive principal amount\nFor example enter 400000: "))
@@ -33,29 +34,30 @@ def input_num():
             rate = float(input("Enter a positive annual interest rate\nFor 4.25% enter 4.25, and NOT 0.0425 and NOT 4.25%: "))
 
         term = float(input("Enter a positive number of years\nFor example for 30 years enter 30 OR two and a half years enter 2.5: "))
-        while cost_per_tile < 0:
+        while term < 0:
             print("\n")
             print("Please try again and enter a positive number of years.")
             term = float(input("Enter a positive number of years\nFor example for 30 years enter 30 OR two and a half years enter 2.5: "))
 
         print('Selecting the number for the appropriate Compounding Interval\n')
-        print('1  Daily\n')
-        print('2  Weekly\n')
-        print('3  Daily\n')
-        print('4  Daily\n')
+        print('1  Daily')
+        print('2  Weekly')
+        print('3  Monthly')
+        print('4  Continuously\n')
 
-        interval = int(input("Enter a positive number of years\nFor example for 30 years enter 30 OR two and a half years enter 2.5: "))
-        while cost_per_tile < 0:
-            print("\n")
-            print("Please try again and enter a positive number of years.")
-            term = float(input("Enter a positive number of years\nFor example for 30 years enter 30 OR two and a half years enter 2.5: "))
+        interval = int(input("Enter a number for the compounding interval\nFor example for daily enter 1: "))
+        while interval not in internal_lst:
+            print("Please try again and enter a positive number.")
+            interval = int(input("Enter a number for the compounding interval\nFor example for daily enter 1: "))
+
+        loan_repay_calc(principal,rate,term,interval)
 
     except ValueError:
         print("Oops an incorrect value was entered!!")
-        print("Values entered for width: {}, for length: {} and cost per tile: {}.".format(flr_width,flr_length,cost_per_tile))
-        floor_tiling_cost()
+        print("Values entered for Principal amount: {}, for Rate: {}, Term: {}, and Compounding Interval: {} .".format(principal,rate,term,interval))
+        input_num()
 
     finally:
         print("Thank you!!")
 
-floor_tiling_cost()
+input_num()
