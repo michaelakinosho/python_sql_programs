@@ -5,8 +5,15 @@
 #Found this particular very interesting and doing the research on the formulas
 #Maybe it is the accountant in me
 
-def loan_repay_calc(p=0,r=0,t=1,cptint=1):
-    print('principal: {}, rate: {}, term: {}, and compounding interval: {}'.format(p,r,t,cptint))
+def loan_repay_calc():
+    loan_dict = input_num()
+    #print(loan_dict)
+    print('principal: {}, rate: {}, term: {}, and compounding interval: {}'.format(loan_dict["principal"],loan_dict["rate"],loan_dict["term"],loan_dict["comp_int"]))
+
+    comp_int = loan_dict["comp_int"]
+    if comp_int in [1,2,3]:
+
+
 
 #Like having a function that simply captures the inputs and subsequently calls the
 #function that will perform the calculations and produces the amortization schedule
@@ -18,7 +25,7 @@ def input_num():
 
     #Compounding interval; 1 for Daily, 2 for Weekly, 3 for Monthly and 4 for Continuously
     interval = int(0)
-    internal_lst = [1,2,3,4]
+    interval_tuple = ("Daily","Weekly","Monthly","Continuously")
 
     try:
         principal = float(input("Enter a positive principal amount\nFor example enter 400000: "))
@@ -39,18 +46,23 @@ def input_num():
             print("Please try again and enter a positive number of years.")
             term = float(input("Enter a positive number of years\nFor example for 30 years enter 30 OR two and a half years enter 2.5: "))
 
-        print('Selecting the number for the appropriate Compounding Interval\n')
-        print('1  Daily')
-        print('2  Weekly')
-        print('3  Monthly')
-        print('4  Continuously\n')
+        print('Selecting the number for the appropriate Compounding Interval')
 
-        interval = int(input("Enter a number for the compounding interval\nFor example for daily enter 1: "))
-        while interval not in internal_lst:
+        for x in interval_tuple:
+            print('{} {}'.format(interval_tuple.index(x)+1, x))
+
+        #print('1  Daily')
+        #print('2  Weekly')
+        #print('3  Monthly')
+        #print('4  Continuously\n')
+
+        interval = int(input("Enter a number for the compounding interval based on the list provided\nFor example for Continuously enter 4: "))
+        while interval<1 or interval>4:
             print("Please try again and enter a positive number.")
-            interval = int(input("Enter a number for the compounding interval\nFor example for daily enter 1: "))
+            interval = int(input("Enter a number for the compounding interval based on the list provided\nFor example for Continuously enter 4: "))
 
-        loan_repay_calc(principal,rate,term,interval)
+        input_dict = {"principal":principal,"rate":rate,"term":term,"comp_int":interval}
+        return input_dict
 
     except ValueError:
         print("Oops an incorrect value was entered!!")
@@ -58,6 +70,6 @@ def input_num():
         input_num()
 
     finally:
-        print("Thank you!!")
+        print("Thank you, we have all the inputs we need to continue!!")
 
-input_num()
+loan_repay_calc()
