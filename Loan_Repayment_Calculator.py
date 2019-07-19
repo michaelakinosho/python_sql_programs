@@ -2,18 +2,63 @@
 #Written by: Michael Akinosho
 #Email: michaelakinosho@moaadvisory.com
 
-#Found this particular very interesting and doing the research on the formulas
+#Found this particular program very interesting and doing the research on the formulas
 #Maybe it is the accountant in me
+
+from math import exp
 
 def loan_repay_calc():
     loan_dict = input_num()
     #print(loan_dict)
-    print('principal: {}, rate: {}, term: {}, and compounding interval: {}'.format(loan_dict["principal"],loan_dict["rate"],loan_dict["term"],loan_dict["comp_int"]))
-
+    print('Original loan amount: {}, annual rate: {}%, term in years: {}, compounding interval: {}, number of payments per year: {}'
+    .format(loan_dict["principal"],loan_dict["rate"],loan_dict["term"],loan_dict["comp_int"],loan_dict["comp_freq_pay"]))
+    tot_pay_back = float(0)
+    p = loan_dict["principal"]
+    r = loan_dict["rate"]/100
+    t = loan_dict["term"]
     comp_int = loan_dict["comp_int"]
+    prd = loan_dict["comp_freq_pay"]
+
     if comp_int in [1,2,3]:
+        tot_pay_back = ((r/prd)*p)/(1-((1+(r/prd))**(-t*prd))) *(t*prd)
+    elif comp_int == 4:
+        tot_pay_back = p * (exp(1)**(r*t))
+    else:
+        print('Compounding interval is not known')
 
+    tot_pay_back = round(tot_pay_back,0)
+    num_of_pay = t*prd
+    each_pay_amt = round(tot_pay_back/num_of_pay,2)
+    #declaring and initializing loan amount balance
+    pay_back_bal = tot_pay_back
+    intv_int_rate = float(r)/float(num_of_pay)
 
+    #declaring and initializing current period interest paid
+    cur_prd_int = float(0)
+    cur_prd_prin = float(0)
+
+    print("Total Payments\tNumber of Payments\tPayment Amount")
+    print("   {}\t\t{}\t\t   {}".format(tot_pay_back,num_of_pay+1,each_pay_amt))
+
+    print("Payment #\tPayment Amount\tInterest Paid\tPrincipal Paid\tLoan Balance")
+    x = 1
+    while pay_back_bal > 0:
+        cur_prd_int = round(intv_int_rate * pay_back_bal,2)
+        cur_prd_prin = round(each_pay_amt - cur_prd_int,2)
+        if round(each_pay_amt,2) != round((cur_prd_int+cur_prd_prin),2):
+            print("Stopped amortization schedule generation")
+            print("Interval payment of:{} is not equal to sum of Interest paid: {} and Principal paid: {}"
+            .format(each_pay_amt,cur_prd_int,cur_prd_prin))
+            break
+        if cur_prd_prin > pay_back_bal:
+            cur_prd_prin = pay_back_bal
+            each_pay_amt = cur_prd_int + cur_prd_prin
+        pay_back_bal = round(pay_back_bal - cur_prd_prin,2)
+        print(" {}\t\t\t{}\t\t{}\t\t{}\t\t{}"
+        .format(x,each_pay_amt,cur_prd_int,cur_prd_prin,pay_back_bal))
+        x += 1
+        if x > 10 and x%10 == 1:
+            print("Payment #\tPayment Amount\tInterest Paid\tPrincipal Paid\tLoan Balance")
 
 #Like having a function that simply captures the inputs and subsequently calls the
 #function that will perform the calculations and produces the amortization schedule
@@ -26,6 +71,8 @@ def input_num():
     #Compounding interval; 1 for Daily, 2 for Weekly, 3 for Monthly and 4 for Continuously
     interval = int(0)
     interval_tuple = ("Daily","Weekly","Monthly","Continuously")
+
+    pay_freq = int(0)
 
     try:
         principal = float(input("Enter a positive principal amount\nFor example enter 400000: "))
@@ -60,13 +107,24 @@ def input_num():
         while interval<1 or interval>4:
             print("Please try again and enter a positive number.")
             interval = int(input("Enter a number for the compounding interval based on the list provided\nFor example for Continuously enter 4: "))
+        if interval == 1:
+            pay_freq = 360
+        elif interval == 2:
+            pay_freq = 52
+        elif interval == 3:
+            pay_freq = 12
+        #Adding the ability to change the number of payments per years for the continously compounding option
+        #May add an input here later
+        elif interval == 4:
+            pay_freq = 12
 
-        input_dict = {"principal":principal,"rate":rate,"term":term,"comp_int":interval}
+        input_dict = {"principal":principal,"rate":rate,"term":term,"comp_int":interval,"comp_freq_pay":pay_freq}
         return input_dict
 
     except ValueError:
         print("Oops an incorrect value was entered!!")
-        print("Values entered for Principal amount: {}, for Rate: {}, Term: {}, and Compounding Interval: {} .".format(principal,rate,term,interval))
+        print("Values entered for Principal amount: {}, for Rate: {}, Term: {}, Compounding Interval: {}, and Number of Payments per Year: {} ."
+        .format(principal,rate,term,interval,pay_freq))
         input_num()
 
     finally:
