@@ -18,7 +18,6 @@ dec_limit = 20
 
 from math import exp, expm1
 from decimal import *
-import os
 
 def e_nth_digit():
 
