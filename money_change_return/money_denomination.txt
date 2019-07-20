@@ -1,0 +1,17 @@
+Penny,Pennies,0.01
+Nickel,Nickels,0.05
+Dime,Dimes,0.10
+Quarter,Quarters,0.25
+Half Dollar coin,Half Dollar coins,0.50
+One Dollar bill ,One Dollar bills,1.00
+Two Dollar bill,Two Dollar bills,2.00
+Five Dollar bill,Five Dollar bills,5.00
+Ten Dollar bill,Ten Dollar bills,10.00
+Twenty Dollar bill,Twenty Dollar bills,20.00
+Fifty Dollar bill,Fifty Dollar bills,50.00
+One Hundred Dollar bill,One Hundred Dollar bills,100.00
+Five Hundred Dollar bill,Five Hundred Dollar bills,500.00
+One Thousand Dollar bill,One Thousand Dollar bills,1000.00
+Five Thousand Dollar bill,Five Thousand Dollar bills,5000.00
+Ten Thousand Dollar bill,Ten Thousand Dollar bills,10000.00
+One Hundred Thousand Dollar bill,One Hundred Thousand Dollar bills,100000.00
