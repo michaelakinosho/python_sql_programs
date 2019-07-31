@@ -1,0 +1,17 @@
+penny,10000
+nickel,10000
+dime,10000
+quarter,10000
+half_dollar_coin,5000
+one_dollar_bill,5000
+two_dollar_bill,2000
+five_dollar_bill,5000
+ten_dollar_bill,2500
+twenty_dollar_bill,2500
+fifty_dollar_bill,2500
+one_hundred_dollar_bill,500
+five_hundred_dollar_bill,100
+one_thousand_dollar_bill,30
+five_thousand_dollar_bill,20
+ten_thousand_dollar_bill,10
+one_hundred_thousand_dollar_bill,2

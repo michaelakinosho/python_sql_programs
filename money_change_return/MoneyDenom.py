@@ -19,12 +19,14 @@ class MoneyDenom:
             fmd = open("money_denomination.txt")
             for x in fmd:
                 #print(x)
-                moneydenom_dict = {"Description_One":x.split(",")[0],"Description_Two":x.split(",")[1],"Amount":float(x.split(",")[2])}
+                moneydenom_dict = {"Id":x.split(",")[0],"Description_One":x.split(",")[1],"Description_Two":x.split(",")[2],"Amount":float(x.split(",")[3])}
                 self.moneydenom.append(moneydenom_dict)
         except IOError:
-            print("Money denomination text file is missing")
+            print("Money denomination file is missing")
+        except ValueError:
+            print("The data type of value is incorrect, did not match expected data type")
 
-
-
-my = MoneyDenom()
-print(my)
+#my = MoneyDenom()
+#print(my)
+#for n in my.moneydenom:
+#    print('{}\n'.format(n))
