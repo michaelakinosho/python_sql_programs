@@ -1,0 +1,8 @@
+auto_detail,auto detailing,513.07,100.25,service,
+tire_rotate,tire rotation,100.16,25.03,service,
+seat_cover,seat cover,300.19,100.30,product,
+cup_hold,cup holder,10.1,1.01,product,
+windshield_fluid,windshield fluid,30.0,2.53,product,
+engine_wash,engine washing,200.08,150.50,product,
+air_fresh,air freshner,1.00,0.10,product,
+engine_rebuild,engine rebuilding,78985.12,5345.50,service,

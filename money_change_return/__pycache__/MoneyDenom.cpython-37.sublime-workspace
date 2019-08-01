@@ -1,0 +1,224 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"n",
+				"n_list"
+			],
+			[
+				"max",
+				"max_price"
+			],
+			[
+				"min",
+				"min_price"
+			],
+			[
+				"x",
+				"x-1"
+			],
+			[
+				"s",
+				"s_lst"
+			],
+			[
+				"miss",
+				"miss_nums"
+			],
+			[
+				"arr2",
+				"arr2_len"
+			],
+			[
+				"f",
+				"False"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"2+2",
+			"pwd",
+			"testing.py",
+			"func()"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/05-Object Oriented Programming/03-Object Oriented Programming Homework - Solution.ipynb",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/MyAssessment_Hired.py",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/MyAssessment_Hired3.py",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/MyAssessment_Hired4.py",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/MyAssessment_Hired6.py",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/MyAssessment_Hired5.py",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/MyAssessment_Hired2.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Recursion/MySolution_Recursion.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Stacks Queues and Deques/MySolution_Deque.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Stacks Queues and Deques/MySolution_Queue.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Stacks Queues and Deques/MySolution_Stack.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolutions_UniqueCharactersInString.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolution_StringCompression.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolutions_SentenceReversal.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Algorithm Analysis and Big O/testing.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Algorithm Analysis and Big O/DynamicArray_MyExample.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolutions_AnagramQuestion.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolutions_ArrayPairQuestion.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolution_LargeContSum.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/MySolution_MissingElement.py",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Array Sequences/Dynamic Array Exercise.ipynb",
+		"/C/Users/Michael Akinosho/Python/Python-for-Algorithms--Data-Structures--and-Interviews/Algorithm Analysis and Big O/testing2.py",
+		"/C/Users/Michael Akinosho/Python/Complete-Python-3-Bootcamp-master/04-Milestone Project - 1/MySolutionMilestoneProject1.ipynb",
+		"/C/Users/Michael Akinosho/Desktop/myexample.py"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "MoneyDenom.cpython-37.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 307.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}

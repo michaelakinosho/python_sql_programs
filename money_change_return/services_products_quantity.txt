@@ -1,0 +1,8 @@
+auto_detail,1,999999
+tire_rotate,1,999999
+seat_cover,1,1000
+cup_hold,1,1000
+windshield_fluid,1,1000
+engine_wash,1,999999
+air_fresh,1,1000
+engine_rebuild,1,999999

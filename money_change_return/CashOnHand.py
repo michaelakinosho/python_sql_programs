@@ -10,11 +10,12 @@ class CashOnHand:
         self.load_cashonhand()
 
     def __str__(self):
-        i = 1
         str_coh = 'The cash on-hand by denomination is: \n'
         str_coh += "Num\tDescription\t\t\t\t\tAmount\tQuantity\n"
         for n in self.cashonhand:
-            str_coh += ("{:2}\t {:<40} {:10,} {:10,}\n".format(self.cashonhand.index(n)+1,n["Description_One"],n["Amount"],n["Quantity"]))
+            str_coh += ("{:2}\t {:<40} {:10,} {:10,}\n"
+                        .format(self.cashonhand.index(n)+1,n["Description_One"],
+                                n["Amount"],n["Quantity"]))
         #print(self.cashonhand)
         return (str_coh)
 
@@ -48,7 +49,7 @@ class CashOnHand:
     def update_cashonhand(self):
         pass
 
-my = CashOnHand()
-print(my)
+#my = CashOnHand()
+#print(my)
 #for n in my.cashonhand:
 #    print('{}\n'.format(n))
