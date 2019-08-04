@@ -3,6 +3,7 @@
 
 # # Milestone Project 2 - Walkthrough Steps Workbook
 # Below is a set of steps for you to follow to try to create the Blackjack Milestone Project game!
+
 # ## Game Play
 # To play a hand of Blackjack the following steps must be followed:
 # 1. Create a deck of 52 cards
