@@ -4,6 +4,7 @@ class CashOnHand:
 
     def __init__(self):
 
+
         self.cashonhand = []
         self.load_cashonhand()
 
