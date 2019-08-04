@@ -43,7 +43,7 @@ class ServicesProducts:
         except ValueError:
             print("The data type of value is incorrect, did not match expected data type")
 
-my = ServicesProducts()
-print(my)
+#my = ServicesProducts()
+#print(my)
 #for n in my.servicesproducts:
 #    print("{}\n".format(n))

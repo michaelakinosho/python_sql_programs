@@ -5,8 +5,6 @@ class CashOnHand:
     def __init__(self):
 
         self.cashonhand = []
-        #my_cashonhand = MoneyDenom()
-
         self.load_cashonhand()
 
     def __str__(self):
@@ -23,9 +21,6 @@ class CashOnHand:
         coh_quantity = []
         try:
             my_cashonhand = MoneyDenom()
-            #print(my_cashonhand.moneydenom[0])
-            #for n in my_cashonhand.moneydenom:
-            #    print('{} \n'.format(n))
             faqmd = open("cashonhand.txt")
             for y in faqmd:
                 coh_dict = {"Id":y.split(",")[0],"Quantity":y.split(",")[1]}
