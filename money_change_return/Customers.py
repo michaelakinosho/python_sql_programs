@@ -6,15 +6,14 @@ Created on Thu Aug  1 19:46:38 2019
 """
 
 class Customers:
-    
+
     def __init__(self):
-        
         self.customers = []
         self.load_custs()
-        
+
     def __str__(self):
         pass
-    
+
     def load_custs(self):
         try:
             fct = open("customers.txt")
