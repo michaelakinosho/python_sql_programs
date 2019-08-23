@@ -1,0 +1,6 @@
+{
+    "app_name": "Painter Text Editor",
+    "author": "Michael Akinosho",
+    "main_module": "src/main/python/main.py",
+    "version": "0.0.0"
+}
