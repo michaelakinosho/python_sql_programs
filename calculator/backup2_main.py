@@ -1,12 +1,11 @@
 import sys
-import pandas as pd
 from decimal import *
 from PySide2.QtCore import Qt, Slot, QObject
 from PySide2.QtGui import QPainter
-from PySide2.QtWidgets import (QGridLayout, QAction, QApplication, QHeaderView, QHBoxLayout, QLabel, QLineEdit, QMainWindow, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget, QButtonGroup, QAbstractButton, QStackedWidget, QStackedLayout, QSizePolicy)
+from PySide2.QtWidgets import (QGridLayout, QAction, QApplication, QHeaderView, QHBoxLayout, QLabel, QLineEdit, QMainWindow, QPushButton, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget, QButtonGroup, QAbstractButton, QStackedWidget, QStackedLayout)
 from PySide2.QtCharts import QtCharts
 
-df = pd
+cal_operator = ""
 class MainWindow(QMainWindow):
 	def __init__(self, widget):
 		QMainWindow.__init__(self)
@@ -17,8 +16,10 @@ class MainWindow(QMainWindow):
 		self.home_menu = self.menu.addMenu("Home")
 
 		std_calc_action = QAction("Standard", self)
+		#std_calc_action.triggered.connect(self.std_calc)
 
 		sci_calc_action = QAction("Scientific", self)
+		#sci_calc_action.triggered.connect(self.sci_calc)
 
 		exit_action = QAction("Exit", self)
 		exit_action.setShortcut("Ctrl+Q")
@@ -45,9 +46,6 @@ class MainWidget(QWidget):
 	def __init__(self):
 		QWidget.__init__(self)
 
-		global df
-		df = CalcFunctions()
-
 		self.stack_widget = QStackedLayout()
 
 		self.std_display = DisplayWidget()
@@ -62,6 +60,8 @@ class MainWidget(QWidget):
 		self.sci_calc_widget.std1.TenKeyPad.buttonClicked[QAbstractButton].connect(self.doCalc)
 
 		self.layout = QVBoxLayout()
+		#self.layout.addWidget(self.sci_calc_widget)
+		#self.layout.addWidget(self.std_calc_widget)
 		
 		#self.setLayout(self.layout)
 		self.stack_widget.addWidget(self.std_calc_widget)
@@ -70,36 +70,45 @@ class MainWidget(QWidget):
 
 	def doCalc(self, button):
 		displayText = self.std_display.display.text()
-		
-		buttonText = button.text()
-		print("Text is: {} and type of text: {}".format(self.std_display.display.text(), type(self.std_display.display.text())))
-		print("Display Text is: {} and type of text: {}".format(displayText, type(displayText)))
-		print("Button Text is: {} and type of text: {}".format(button.text(), type(button.text())))
 		try:
-			if buttonText in ["0","1","2","3","4","5","6","7","8","9","."]:
-				if displayText == "0":
-					if buttonText == ".":
-						buttonText = ("0"+buttonText)
-					self.std_display.display.clear()
-					self.std_display.display.setText(buttonText)
-					self.sci_display.display.setText(self.std_display.display.text())
-				elif displayText != "0":
-					if buttonText == "." and buttonText in displayText:
-						pass
-					else:
-						self.std_display.display.setText(displayText + buttonText)
-						self.sci_display.display.setText(self.std_display.display.text())
-
-			else:
-				color = button.palette().button().color()
-				print("Button color name before change is: {} and color code is {}".format(color.name(), color))
-				button.setStyleSheet('QPushButton {background-color: #a3c1da;}')
+			if button.text() in ["0","1","2","3","4","5","6","7","8","9"]:
+				if displayText != "0":
+					displayText = displayText + button.text()
+			elif button.text() in ["/","*","-","+"]:
 				print("testing")
 				print(button.text())
 		except ValueError:
-			displayText = displayText
+			displayText = self.std_display.display.text()
 		except:
-			displayText = displayText
+			displayText = self.std_display.display.text()
+
+		self.std_display.display.setText(str(displayText))
+		self.sci_display.display.setText(self.std_display.display.text())
+
+	def std_calc(self):
+		self.layout = QVBoxLayout()
+		
+		print(self.layout.count())
+
+		self.layout.addWidget(self.display)
+		
+		self.layout.addLayout(self.std_layout)
+		print(self.layout.count())
+		print("testing standard calculator")
+		self.setLayout(self.layout)
+		print(self.layout.count())
+
+		self.setLayout(self.layout)
+
+	def sci_calc(self):
+		self.sci_layout = QGridLayout()
+		self.layout = QVBoxLayout()
+		self.layout.addWidget(self.display)
+		self.sci_layout.addLayout(self.scikeyLayout,0,0)
+		self.sci_layout.addLayout(self.std_layout,0,1)
+		self.layout.addLayout(self.sci_layout)
+		print("testing scientific calculator")
+		self.setLayout(self.layout)
 
 class DisplayWidget(QWidget):
 	def __init__(self):
@@ -121,27 +130,17 @@ class StdCalcWidget(QWidget):
 	def __init__(self):
 		QWidget.__init__(self)
 
-		#df.prnFun()
-
 		#initialize the ten key pad
 		self.tenkeyLayout = QGridLayout()
 		self.TenKeyPad = QButtonGroup()
 
-		std_b_list = ["MC","MR","MS","M+","M-","<--","CE","C","+ -","SQRT","7","8","9","/","%","4","5","6","*","1" + "/" + "x","1","2","3","-","=","0"," ",".","+"," "]
+		std_b_list = ["MC","MR","MS","M+","M-","<--","CE","C","NEG","SQRT","7","8","9","/","%","4","5","6","*","1" + "/" + "x","1","2","3","-"," ","0"," ",".","+","="]
 		x = 0
 		y = 0
 		for i in std_b_list:
 			button = QPushButton(i)
-
-			button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-
 			if button.text() != " ":
-				if button.text() == "0":
-					self.tenkeyLayout.addWidget(button, x, y,1,2)
-				elif button.text() == "=":
-					self.tenkeyLayout.addWidget(button, x, y,2,1)
-				else:
-					self.tenkeyLayout.addWidget(button, x, y,1,1)
+				self.tenkeyLayout.addWidget(button, x, y)
 				self.TenKeyPad.addButton(button)
 			y += 1
 			if y == 5:
@@ -149,6 +148,7 @@ class StdCalcWidget(QWidget):
 				y = 0
 		
 		self.std_disp = DisplayWidget()
+		#self.TenKeyPad.buttonClicked[QAbstractButton].connect(self.std_disp.showNumber)
 
 		self.std_layout = QVBoxLayout()
 
@@ -188,25 +188,6 @@ class SciCalcWidget(QWidget):
 		self.sci_vert_layout.addLayout(self.sci_layout)
 
 		self.setLayout(self.sci_vert_layout)
-
-class CalcFunctions():
-	def __init__(self):
-		self.dfc = pd
-		self.load_funcs()
-
-	def __str__(self):
-		print(str(self.dfc.name))
-
-	def prnFun(self):
-		print(self.dfc)
-
-	def load_funcs(self):
-		try:
-			self.dfc = pd.read_csv("functions_file.csv")
-		except IOError:
-			print("Unable to load functions file")
-		except:
-			print("Unable to load functions file")
 
 if __name__=="__main__":
 	#Qt Application
