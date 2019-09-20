@@ -7,6 +7,9 @@ from PySide2.QtWidgets import (QGridLayout, QAction, QApplication, QHeaderView, 
 from PySide2.QtCharts import QtCharts
 
 df = pd
+brac_lst = []
+result_lst = []
+operator_lst = []
 class MainWindow(QMainWindow):
 	def __init__(self, widget):
 		QMainWindow.__init__(self)
@@ -60,6 +63,7 @@ class MainWidget(QWidget):
 
 		self.std_calc_widget.TenKeyPad.buttonClicked[QAbstractButton].connect(self.doCalc)
 		self.sci_calc_widget.std1.TenKeyPad.buttonClicked[QAbstractButton].connect(self.doCalc)
+		self.sci_calc_widget.SciKeyPad.buttonClicked[QAbstractButton].connect(self.doCalc)
 
 		self.layout = QVBoxLayout()
 		
@@ -69,6 +73,7 @@ class MainWidget(QWidget):
 		self.setLayout(self.stack_widget)
 
 	def doCalc(self, button):
+		global brac_lst
 		displayText = self.std_display.display.text()
 		
 		buttonText = button.text()
@@ -76,7 +81,9 @@ class MainWidget(QWidget):
 		print("Display Text is: {} and type of text: {}".format(displayText, type(displayText)))
 		print("Button Text is: {} and type of text: {}".format(button.text(), type(button.text())))
 		try:
-			if buttonText in ["0","1","2","3","4","5","6","7","8","9","."]:
+			if buttonText in ["0","1","2","3","4","5","6","7","8","9",".","(",")"]:
+				if self.checkBrackets(button) == False:
+					buttonText = ""
 				if displayText == "0":
 					if buttonText == ".":
 						buttonText = ("0"+buttonText)
@@ -101,6 +108,39 @@ class MainWidget(QWidget):
 		except:
 			displayText = displayText
 
+	def checkBrackets(self, button):
+		global brac_lst
+		brac_count = len(brac_lst)
+		print(brac_count)
+
+		brac_buttonText = button.text()
+		if brac_buttonText == "(":
+			brac_lst.append("(")
+			brac_count += 1
+			return(True)
+
+		elif brac_buttonText == ")":
+			if brac_count > 1:
+				brac_lst.pop()
+				brac_count -= 1
+				return(True)
+			else:
+				return(False)
+
+	def checkOperators(self, button):
+		global operator_lst
+		operator_count = len(operator_lst)
+
+		oper_buttonText = button.text()
+		if oper_buttonText in ["+","-","*","/","Mod","X^y","y√X"]:
+			operator_lst.append(self.std_display.display.text())
+			if operator_lst[-1] in ["+","-","*","/"]:
+				print("testing")
+				
+
+
+
+
 class DisplayWidget(QWidget):
 	def __init__(self):
 		QWidget.__init__(self)
@@ -121,8 +161,8 @@ class StdCalcWidget(QWidget):
 	def __init__(self):
 		QWidget.__init__(self)
 
-		#df.prnFun()
-
+		df.prnFun()
+		
 		#initialize the ten key pad
 		self.tenkeyLayout = QGridLayout()
 		self.TenKeyPad = QButtonGroup()
@@ -193,9 +233,6 @@ class CalcFunctions():
 	def __init__(self):
 		self.dfc = pd
 		self.load_funcs()
-
-	def __str__(self):
-		print(str(self.dfc.name))
 
 	def prnFun(self):
 		print(self.dfc)

@@ -34,8 +34,36 @@ def num_prime_factors(n=1):
     	#print(x)
     	x += 1
 
-    print(prime_set)
-    print(factors_list)
+    #print(prime_set)
+    #print(factors_list)
+
+    i = 0
+    j = 0
+    factors_set = {1}
+    f_num = 0
+    while i < len(factors_list):
+        f_num = factors_list[i]
+        factors_set.add(f_num)
+        j = 0
+
+        while j < len(factors_list):
+            if i != j:
+                f_num = f_num * factors_list[j]
+            factors_set.add(f_num)
+
+            j += 1
+
+        f_num = factors_list[i]
+        j = len(factors_list) - 1
+        while j > 0:
+            #print(j)
+            if i != j:
+                f_num = f_num * factors_list[j]
+            factors_set.add(f_num)
+
+            j -= 1
+        i += 1
+    print(factors_set)
 
 def input_num():
     num_digits = 0
