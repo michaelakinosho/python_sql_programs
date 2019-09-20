@@ -6,47 +6,54 @@ import random
 import re
 import sys
 
-# Complete the breakingRecords function below.
-def breakingRecords(scores, n):
-	#print(scores)
-	i = 0
-	max_score = scores[i]
-	min_score = scores[i]
-	scores_list = []
-	records_list = []
-	max_set = set()
-	min_set = set()
-	while i < n:
-		if i == 0:
-			scores_list.append([i, scores[i],max_score,min_score])
+# Complete the timeInWords function below.
+def timeInWords(h, m):
+	every15 = {0:"o' clock", 15:"quarter past", 30:"half past", 45:"quarter to"}
+	upto19 = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight", 9:"nine", 10:"ten", 11:"eleven", 12:"twelve", 13:"thirteen", 14:"fourteen", 16:"sixteen", 17:"seventeen", 18:"eighteen", 19:"nineteen"}
+	from20up = {20:"twenty", 30:"thirty", 40:"forty", 50:"fifty"}
+
+	m_str = ""
+	h_str = ""
+
+	m_int = int(m)
+	h_int = int(h)
+
+	if m_int > 30:
+		if h_int == 12:
+			h_int = 1
 		else:
-			max_score = scores[i] if scores[i] > max_score else max_score
-			min_score = scores[i] if scores[i] < min_score else min_score
-			scores_list.append([i,scores[i],max_score,min_score])
-			max_set.add(max_score) if max_score != scores[0] else max_set.add("-")
-			min_set.add(min_score) if min_score != scores[0] else min_set.add("-")
-		i += 1
+			h_int += 1
 
-		max_set.discard("-")
-		min_set.discard("-")
 
-	#print(scores_list)
-	records_list.append(len(max_set))
-	records_list.append(len(min_set))
-	#print(records_list)
-	return("{} {}".format(len(max_set), len(min_set)))
+	if m_int in every15:
+		m_str = every15.get(m_int)
+	else:
+		if m_int > 30:
+			m_int = 60 - m_int
+			m_str = "twenty " + str(upto19.get(int(m_int%10))) + " minutes to"
+		else:
+			m_str = "twenty " + str(upto19.get(int(m_int%10))) + " minutes to"
+
+
+	elif m_int > 19:
+		m_str = str(from20up.get(int(m_int/10)*10)) + " " + str(upto19.get(int(m_int%10))) + " minutes"
+	else:
+		m_str = upto19.get(m_int)
+
+	#if m > 30:
+	#	h += 1
+	print(m_str)
 
 
 if __name__ == '__main__':
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    n = int(input())
+    h = int(input())
 
-    scores = list(map(int, input().rstrip().split()))
+    m = int(input())
 
-    result = breakingRecords(scores, n)
+    result = timeInWords(h, m)
 
-    #fptr.write(' '.join(map(str, result)))
-    #fptr.write('\n')
+    #fptr.write(result + '\n')
 
     #fptr.close()
