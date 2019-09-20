@@ -9,7 +9,7 @@ from math import exp
 
 def loan_repay_calc():
     loan_dict = input_num()
-    #print(loan_dict)
+    #print(loan_dict)S
     print('Original loan amount: {}, annual rate: {}%, term in years: {}, compounding interval: {}, number of payments per year: {}'
     .format(loan_dict["principal"],loan_dict["rate"],loan_dict["term"],loan_dict["comp_int"],loan_dict["comp_freq_pay"]))
     tot_pay_back = float(0)
@@ -18,27 +18,30 @@ def loan_repay_calc():
     t = loan_dict["term"]
     comp_int = loan_dict["comp_int"]
     prd = loan_dict["comp_freq_pay"]
+    intv_int_rate = float(r)/float(12)
+    
+    #Number of payment periods
+    num_of_pay = t * prd
 
     if comp_int in [1,2,3]:
-        tot_pay_back = ((r/prd)*p)/(1-((1+(r/prd))**(-t*prd))) *(t*prd)
+        tot_pay_back = (p*intv_int_rate)/(1-(1+intv_int_rate)**(-t*prd))
+        tot_pay_back = tot_pay_back * (t*prd)
     elif comp_int == 4:
         tot_pay_back = p * (exp(1)**(r*t))
     else:
         print('Compounding interval is not known')
 
-    tot_pay_back = round(tot_pay_back,0)
-    num_of_pay = t*prd
     each_pay_amt = round(tot_pay_back/num_of_pay,2)
     #declaring and initializing loan amount balance
-    pay_back_bal = tot_pay_back
-    intv_int_rate = float(r)/float(num_of_pay)
 
+    pay_back_bal = p
+    
     #declaring and initializing current period interest paid
     cur_prd_int = float(0)
     cur_prd_prin = float(0)
 
-    print("Total Payments\tNumber of Payments\tPayment Amount")
-    print("   {}\t\t{}\t\t   {}".format(tot_pay_back,num_of_pay+1,each_pay_amt))
+    print("Loan plus Interest\t\tNumber_of_Payments\t\tPayment_Amount\t\tLoan_Amount\t\tInterest_Amount")
+    print("{:10,.2f}\t{:20.0f}\t{:20,.2f}\t{:20,.2f}\t{:10,.2f}".format(tot_pay_back,num_of_pay,each_pay_amt,p,tot_pay_back-p))
 
     print("Payment #\tPayment Amount\tInterest Paid\tPrincipal Paid\tLoan Balance")
     x = 1
@@ -54,7 +57,8 @@ def loan_repay_calc():
             cur_prd_prin = pay_back_bal
             each_pay_amt = cur_prd_int + cur_prd_prin
         pay_back_bal = round(pay_back_bal - cur_prd_prin,2)
-        print(" {}\t\t\t{}\t\t{}\t\t{}\t\t{}"
+        print(" {:5,.0f}{:15,.2f}\t\t{:10,.2f}\t\t{:10,.2f}\t\t{:10,.2f}"
+        #print(" {}\t\t\t{:.2f}\t\t{:10.2f}\t\t{}\t\t{}"
         .format(x,each_pay_amt,cur_prd_int,cur_prd_prin,pay_back_bal))
         x += 1
         if x > 10 and x%10 == 1:
