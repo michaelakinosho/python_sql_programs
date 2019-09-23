@@ -15,12 +15,16 @@ for i in range(brth):
     nd = int((wth-(j*3))/2)
     if i == hw:
         print((dash*int((wth-7)/2) + wc + dash*int((wth-7)/2)))
+
     elif i < hw:
-        print((dash*nd).rjust(wth) + (se*j).center(j*3) + (dash*nd).ljust(wth))
+        #print((dash*nd).rjust(wth) + (se*j).center(j*3) + (dash*nd).ljust(wth))
+        print((dash*nd) + (se*j).center(j*3) + (dash*nd))
         j += 2
     elif i > hw:
         j -= 2
-        print((dash*nd).rjust(wth) + (se*j).center(j*3) + (dash*nd).ljust(wth))
+        nd += 3
+        print((dash*nd) + (se*j).center(j*3) + (dash*nd))
+
 
 #Top Cone
 #for i in range(thickness):
