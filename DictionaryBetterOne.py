@@ -10,12 +10,14 @@ if __name__ == '__main__':
     n = int(input())
     phoneBook = {}
     nameOnly = []
+    pB_dict = {}
     nameFound = "Not found"
     names_list = []
     ind = 0
 
     for _ in range(0,n):
         arr = list(map(str, input().rstrip().split()))
+        pB_dict = {arr[0]:arr[1]}
         nameOnly.append(arr[0])
         phoneBook.update({arr[0]:arr[1]})
 
