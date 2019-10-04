@@ -1,17 +1,18 @@
 #!/usr/bin/python
 
-def displayPathtoPrincess(n,grid):
+def nextMove(n,r,c,grid):
 #print all the moves here
     moves_list = []
-    my_m = (int(n/2),int(n/2))
-    if grid[0][0] == 'p':
-        my_p = (0,0)
-    elif grid[0][n-1] == 'p':
-        my_p = (0,n-1)
-    elif grid[n-1][0] == 'p':
-        my_p = (n-1,0)
-    elif grid[n-1][n-1] == 'p':
-        my_p = (n-1,n-1)
+    my_m = (r,c)
+    i = 0
+    while i < len(grid):
+        if 'p' in grid[i]:
+            j = grid[i].index('p')
+            break
+        i += 1
+    my_p = (i,j)
+    #print(my_m)
+    #print(my_p)
 
     i_diff = my_p[0] - my_m[0]
     j_diff = my_p[1] - my_m[1]
@@ -38,14 +39,13 @@ def displayPathtoPrincess(n,grid):
             moves_list.append("RIGHT")
             x += 1
 
-    for y in moves_list:
-        print(y)
-    #print(my_m)
-    #print(my_p)
+    return(moves_list[0])
 
-m = int(input())
+
+n = int(input())
+r,c = [int(i) for i in input().strip().split()]
 grid = []
-for i in range(0, m):
-    grid.append(input().strip())
+for i in range(0, n):
+    grid.append(input())
 
-displayPathtoPrincess(m,grid)
+print(nextMove(n,r,c,grid))
