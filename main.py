@@ -1,38 +1,24 @@
-#!/bin/python3
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+class Solution:
+    def display(self,head):
+        current = head
+        while current:
+            print(current.data,end=' ')
+            current = current.next
 
-import math
-import os
-import random
-import re
-import sys
+    def insert(self,head,data):
+        self.next = Node(data)
+        return(head.next)
 
-# Complete the beautifulDays function below.
-def beautifulDays(i, j, k):
-    counter = 0
+    #Complete this method
 
-    for x in range(i,j+1):
-        xs = str(x)
-        #print(x)
-        #print(xs[:-1])
-        if abs(int(x) - int(xs[::-1]))%k == 0:
-            counter += 1
-
-    print(counter)
-    return(counter)
-
-if __name__ == '__main__':
-    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
-    ijk = input().split()
-
-    i = int(ijk[0])
-
-    j = int(ijk[1])
-
-    k = int(ijk[2])
-
-    result = beautifulDays(i, j, k)
-
-    #fptr.write(str(result) + '\n')
-
-    #fptr.close()
+mylist= Solution()
+T=int(input())
+head=None
+for i in range(T):
+    data=int(input())
+    head=mylist.insert(head,data)
+mylist.display(head);
