@@ -6,6 +6,7 @@ import random
 import re
 import sys
 
+
 # Complete the factorial function below.
 def factorial(n,ans=1):
     if n - 1 > 0:
