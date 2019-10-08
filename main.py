@@ -1,26 +1,24 @@
-#!/bin/python3
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+class Solution:
+    def display(self,head):
+        current = head
+        while current:
+            print(current.data,end=' ')
+            current = current.next
 
-import math
-import os
-import random
-import re
-import sys
+    def insert(self,head,data):
+        self.next = Node(data)
+        return(head.next)
 
-# Complete the factorial function below.
-def factorial(n,ans=1):
-    if n - 1 > 0:
-        ans = n * factorial(n-1)
+    #Complete this method
 
-    print(ans)
-    return(ans)
-
-if __name__ == '__main__':
-    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
-    n = int(input())
-
-    result = factorial(n)
-
-    #fptr.write(str(result) + '\n')
-
-    #fptr.close()
+mylist= Solution()
+T=int(input())
+head=None
+for i in range(T):
+    data=int(input())
+    head=mylist.insert(head,data)
+mylist.display(head);
