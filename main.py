@@ -1,24 +1,57 @@
-#!/usr/bin/python
+#!/bin/python3
 
-# Head ends here
+import math
+import os
+import random
+import re
+import sys
 
-def next_move(posr, posc, board,dirty_list):
+# Complete the minimumBribes function below.
+def minimumBribes(q,n):
+    cnt,pos,org = list(range(1,n+1)),list(range(1,n+1)),list(range(1,n+1))
+    print(cnt)
+    print(pos)
+    print(org)
 
-    print("")
+    invalid = 0
+    ans = 0
+    for i in range(n):
+        if invalid:
+            break
 
-# Tail starts here
+        oldp = pos[q[i]]
+        print("oldp: ",oldp, "arr[i]: ", q[i])
 
-if __name__ == "__main__":
-    pos = [int(i) for i in input().strip().split()]
-    board = [[j for j in input().strip()] for i in range(5)]
-    dirty_list = []
-    i = 0
-    while i < 5:
-        j = 0
-        while j < 5:
-            if board[i][j] == 'd':
-                dirty_list.append(tuple(i,j))
-            j += 1
-        i += 1
-    print(dirty_list)
-    next_move(pos[0], pos[1], board, dirty_list)
+        newp = i + 1
+
+        while oldp != newp:
+
+            ans += 1
+
+            cnt[org[oldp+1]] += 1
+
+            if cnt[org[oldp + 1]] > 2:
+                invalid = 1
+                break
+
+            org[oldp],org[oldp+1] = org[oldp+1],org[oldp]
+
+            pos[org[oldp]] = oldp
+            pos[org[oldp+1]] = oldp + 1
+            print("oldp: ", oldp, "newp: ", newp)
+            oldp += 1
+
+    if invalid:
+        ans = "Too chaotic"
+
+    print(ans)
+
+if __name__ == '__main__':
+    t = int(input())
+
+    for t_itr in range(t):
+        n = int(input())
+
+        q = list(map(int, input().rstrip().split()))
+
+        minimumBribes(q,n)
