@@ -6,37 +6,32 @@ import random
 import re
 import sys
 
-# Complete the jumpingOnClouds function below.
-def jumpingOnClouds(n, c):
-    jumps_counter = 0
-    i = 0
-    while i < n-2:
-        if c[i + 2] == 0:
-            jumps_counter += 1
-            i += 2
-        elif c[i + 1] == 0:
-            jumps_counter += 1
-            i += 1
-        else:
-            i += 1
-    if i < n - 1:
-        jumps_counter += 1
+# Complete the minimumSwaps function below.
+def minimumSwaps(arr):
+    ref_arr = sorted(arr)
+    index_dict = {v: i for i,v in enumerate(arr)}
+    swaps = 0
 
-    #print(i)
-    print(jumps_counter)
-    return(jumps_counter)
+    for i,v in enumerate(arr):
+        correct_value = ref_arr[i]
+        if v != correct_value:
+            to_swap_ix = index_dict[correct_value]
+            arr[to_swap_ix],arr[i] = arr[i], arr[to_swap_ix]
+            index_dict[v] = to_swap_ix
+            index_dict[correct_value] = i
+            swaps += 1
 
-
+    print(swaps)
 
 if __name__ == '__main__':
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     n = int(input())
 
-    c = list(map(int, input().rstrip().split()))
+    arr = list(map(int, input().rstrip().split()))
 
-    result = jumpingOnClouds(n, c)
+    res = minimumSwaps(arr)
 
-    #fptr.write(str(result) + '\n')
+    #fptr.write(str(res) + '\n')
 
     #fptr.close()
