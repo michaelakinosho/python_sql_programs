@@ -1,35 +1,31 @@
-#!/bin/python3
+class Node:
+    def __init__(self,data):
+        self.right=self.left=None
+        self.data = data
+class Solution:
+    def insert(self,root,data):
+        if root==None:
+            return Node(data)
+        else:
+            if data<=root.data:
+                cur=self.insert(root.left,data)
+                root.left=cur
+            else:
+                cur=self.insert(root.right,data)
+                root.right=cur
+        return root
 
-import math
-import os
-import random
-import re
-import sys
+    def getHeight(self,root):
+        #Write your code here
+        print("test")
 
-# Complete the minimumSwaps function below.
-def minimumSwaps(arr):
-    countSwaps = 0
-    n = len(arr)
-    #print(arr)
 
-    for i in range(n-1,-1,-1):
-        #print("i: ", i, "arr[i]: ", arr[i], "arr.index(i+1): ",arr.index(i+1) )
-        if i != arr.index(i+1):
-            arr[arr.index(i+1)] = arr[i]
-            #arr[arr.index(i+1)],arr[i] = arr[i],arr[arr.index(i+1)]
-            countSwaps += 1
-        #print(arr)
-    print(countSwaps)
-
-if __name__ == '__main__':
-    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
-    n = int(input())
-
-    arr = list(map(int, input().rstrip().split()))
-
-    res = minimumSwaps(arr)
-
-    #fptr.write(str(res) + '\n')
-
-    #fptr.close()
+T=int(input())
+myTree=Solution()
+root=None
+for i in range(T):
+    data=int(input())
+    root=myTree.insert(root,data)
+#height=myTree.getHeight(root)
+#print(height)
+print(myTree)
