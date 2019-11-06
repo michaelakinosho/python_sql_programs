@@ -1,8 +1,6 @@
-#!/usr/bin/python
 
-# Head ends here
-#FOR BOTCLEAN AND SCHOCATISTIC
-def next_move(posr, posc, board):
+
+def next_move(posr, posc, dimx, dimy, board):
     if board[posr][posc] == 'd':
         return("CLEAN")
 
@@ -54,13 +52,12 @@ def next_move(posr, posc, board):
             return("CLEAN")
             break
 
-    #print(move_list)
-    #return(move_list[0])
 
 
-# Tail starts here
+    print("")
 
 if __name__ == "__main__":
     pos = [int(i) for i in input().strip().split()]
-    board = [[j for j in input().strip()] for i in range(5)]
-    print(next_move(pos[0], pos[1], board))
+    dim = [int(i) for i in input().strip().split()]
+    board = [[j for j in input().strip()] for i in range(dim[0])]
+    print(next_move(pos[0], pos[1], dim[0], dim[1], board))
