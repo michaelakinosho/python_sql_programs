@@ -15,7 +15,8 @@ def formingMagicSquare(s):
     number_difference = 7
     even_digit = 0
     s_sublist = []
-
+    s_sublist_i_value = 0
+    s_i_value = 0
 
     MagicSquares = [
                     [[8,3,4],[1,5,9],[6,7,2]],
@@ -27,20 +28,19 @@ def formingMagicSquare(s):
                     [[2,7,6],[9,5,1],[4,3,8]],
                     [[2,9,4],[9,5,1],[4,3,8]]]
 
-    if s[1][1] != 5:
-        cost_counter = abs(s[1][1]-5)
-
     if s[0][0]%2 != 0:
         for n in even_nums:
             if abs(s[0][0]-n) == 1:
                 even_digit = n
-                number_difference = 1
+                #number_difference = 1
                 break
-            elif abs(s[0][0]-n) < even_digit:
+            elif abs(s[0][0]-n) < number_difference:
                 even_digit = n
-                number_difference = abs(s[0][0]-n)
+                #number_difference = abs(s[0][0]-n)
         s[0][0] = even_digit
         #cost_counter += number_difference
+    else:
+        even_digit = s[0][0]
 
     n = 0
     while n < len(MagicSquares):
@@ -49,18 +49,31 @@ def formingMagicSquare(s):
             s_sublist.append(MagicSquares[n+1])
         n += 2
 
-    i = 0
-    while i < len(s_sublist[0]):
+    k = 0
+    while k < 2:
+        i = 0
+        #print(s_sublist[k])
+        while i < len(s_sublist[k]):
+            j = 0
+            while j < len(s_sublist[k]):
+                s_sublist_i_value = s_sublist[k][i][j]
+                s_i_value = s[i][j]
+                if s_sublist_i_value != s_i_value:
+                    if k == 0:
+                        cc_s_sublist_one += abs(s_sublist_i_value-s_i_value)
+                    elif k == 1:
+                        cc_s_sublist_two += abs(s_sublist_i_value-s_i_value)
+                j += 1
+            i += 1
+        k += 1
 
+    print("cost counter one: ", cc_s_sublist_one)
+    print("cost counter two: ", cc_s_sublist_two)
 
-    print(cost_counter)
-
-    #print(MagicSquares)
-    #for n in MagicSquares:
-    #    print(n)
-
-    return(0)
-
+    if cc_s_sublist_one <= cc_s_sublist_two:
+        return(cc_s_sublist_one)
+    else:
+        return(cc_s_sublist_two)
 
 if __name__ == '__main__':
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')
