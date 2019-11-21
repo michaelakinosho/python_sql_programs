@@ -34,3 +34,4 @@ for q_itr in range(q):
         counter += sum(range(len(m)))
 
     print(my_dict)
+    print(counter)
