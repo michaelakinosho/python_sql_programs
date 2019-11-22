@@ -33,18 +33,18 @@ for q_itr in range(q):
         counter += sum(range(len(m)))
         print("In step 1 count of: ",n, sum(range(len(m))))
 
-        #step 2
-        if len(m) > 2:
-            counter += (sum(range(len(m)-3+1))*3)+1
-            print("In step 2a, count of: ",n, (sum(range(len(m)-3+1))*3)+1 )
-
-        if len(m) == 2 and m[1]-m[0]>1:
-            counter += 1
-            print("In step 2b-1, count of: ",n, "1")
-        elif len(m) ==2 and m[1]-m[0]==1:
-            if m[0] == len(m)-1 or m[1] == len(m)-1:
-                counter += 1
-                print("In step 2b-2, count of: ",n,'1')
+        i = 0
+        my_str = ""
+        while i < len(m)-2:
+            j = 1
+            while j < len(m)-1-i:
+                #print(str(m[i]) + str(m[i]+j))
+                k = 1
+                while k < len(m)-1:
+                    print(str(m[i]) + str(m[i]+j) + str(m[i]+k) + str(m[i]+j+k) )
+                    k += 1
+                j += 1
+            i += 1
 
     print(my_dict)
     print(counter)
