@@ -32,5 +32,17 @@ for q_itr in range(q):
     #step 1
     for n,m in my_dict.items():
         counter += sum(range(len(m)))
+        print(n, sum(range(len(m))))
+
+        i = 0
+        while i < len(m):
+            j = i
+            while j < len(m):
+                print(m[i], m[j]-1)
+                if m[j]-1 > m[i]:
+                    counter += 1
+                j += 1
+            i += 1
 
     print(my_dict)
+    print(counter)
