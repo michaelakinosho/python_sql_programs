@@ -1,34 +1,24 @@
-class EvenStream(object):
-    def __init__(self):
-        self.current = 0
+def product(*args, repeat=1):
+    # product('ABCD', 'xy') --> Ax Ay Bx By Cx Cy Dx Dy
+    # product(range(2), repeat=3) --> 000 001 010 011 100 101 110 111
+    pools = [tuple(pool) for pool in args] * repeat
+    result = [[]]
+    for pool in pools:
+        result = [x+[y] for x in result for y in pool]
+    for prod in result:
+        yield tuple(prod)
 
-    def get_next(self):
-        to_return = self.current
-        self.current += 2
-        return to_return
+def permutations(iterable, r=None):
+    pool = tuple(iterable)
+    n = len(pool)
+    r = n if r is None else r
+    for indices in product(range(n), repeat=r):
+        if len(set(indices)) == r:
+            yield tuple(pool[i] for i in indices)
 
-class OddStream(object):
-    def __init__(self):
-        self.current = 1
+#print(next(product('abcd','ABCD')))
+for h in permutations('abcd',3):
+    print(h)
 
-    def get_next(self):
-        to_return = self.current
-        self.current += 2
-        return to_return
-
-def print_from_stream(n, stream=None):
-    if stream == None:
-        stream = EvenStream()
-
-    for _ in range(n):
-        print(stream.get_next())
-
-
-queries = int(input())
-for _ in range(queries):
-    stream_name, n = input().split()
-    n = int(n)
-    if stream_name == "even":
-        print_from_stream(n)
-    else:
-        print_from_stream(n, OddStream())
+#for h in product('abcd', repeat=3):
+#    print(h)
