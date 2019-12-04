@@ -36,13 +36,19 @@ for q_itr in range(q):
         i = 0
         my_str = ""
         while i < len(m)-2:
+            #print(str(m[i]))
             j = 1
-            while j < len(m)-1-i:
-                #print(str(m[i]) + str(m[i]+j))
-                k = 1
-                while k < len(m)-1:
-                    print(str(m[i]) + str(m[i]+j) + str(m[i]+k) + str(m[i]+j+k) )
-                    k += 1
+            while j < m[-1]:
+                if m[i]+j < m[-1]:
+                    #print(str(m[i]),str(m[i]+j))
+                    k = 1
+                    while k < m[-1]:
+                        if m[i]+k < m[-1]:
+                            print(str(m[i]),str(m[i]+j)," ",str(m[i]+k))
+
+                        k += 1
+
+
                 j += 1
             i += 1
 
