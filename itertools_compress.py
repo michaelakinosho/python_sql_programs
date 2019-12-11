@@ -6,6 +6,7 @@ groups = []
 m_list = []
 
 for n,m in groupby(A):
+    print(n)
     groups.append(list(m))
 
 for n in groups:
