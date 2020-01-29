@@ -1,24 +1,24 @@
-def product(*args, repeat=1):
-    # product('ABCD', 'xy') --> Ax Ay Bx By Cx Cy Dx Dy
-    # product(range(2), repeat=3) --> 000 001 010 011 100 101 110 111
-    pools = [tuple(pool) for pool in args] * repeat
-    result = [[]]
-    for pool in pools:
-        result = [x+[y] for x in result for y in pool]
-    for prod in result:
-        yield tuple(prod)
+from itertools import permutations
+from itertools import combinations
 
-def permutations(iterable, r=None):
-    pool = tuple(iterable)
-    n = len(pool)
-    r = n if r is None else r
-    for indices in product(range(n), repeat=r):
-        if len(set(indices)) == r:
-            yield tuple(pool[i] for i in indices)
+A = input()
+s = input().replace(" ","")
+a = s.replace("a","")
+B = int(input())
 
-#print(next(product('abcd','ABCD')))
-for h in permutations('abcd',3):
-    print(h)
+#print(A, B)
+x = (len([*permutations(s,B)]))
+y = (len([*permutations(a,B)]))
+print(x,y)
+print('{:.12f}'.format((float(x-y))/x))
 
-#for h in product('abcd', repeat=3):
-#    print(h)
+x = (len([*combinations(s,B)]))
+y = (len([*combinations(a,B)]))
+print(x,y)
+print('{:.12f}'.format((float(x-y))/x))
+
+
+#print(float((len([*permutations(a,B)])-len([*permutations(a,B)]))/len([*permutations(s,B)])))
+#1) Do regular permutations
+#2) Do permutation but replace any characters that are 'a' with ''
+#Divide 2) by 1)
