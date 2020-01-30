@@ -9,7 +9,7 @@ B = int(B)
 #lst = [(*permutations(A,B))]
 #print(lst)
 y = ""
-for x in combinations_with_replacement(A,B):
+for x in combinations_with_replacement(A,range(0,1)):
     #print(type(x))
     print(tuple(''.join(x)))
 
