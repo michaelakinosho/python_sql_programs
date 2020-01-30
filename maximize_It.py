@@ -3,15 +3,15 @@ A,B = map(int,input().split(" "))
 
 fkey = lambda x : x**2%B
 big_list = []
-max_num  = 0
+max_num  = -1
 
 for i in range(A):
-    big_list.append(list(map(int,input().split(" "))))
+    big_list.append(list(map(int,input().split(" ")))[1:])
 
 for j in product(*big_list):
-    print(j)
-    
-    print(sum(map(lambda x:x**2,j))%B)
+    #print(j)
+
+    #print(sum(map(lambda x:x**2,j))%B)
     max_num = max(sum(map(lambda x:x**2,j))%B, max_num)
 
 print(max_num)
