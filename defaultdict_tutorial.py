@@ -9,13 +9,17 @@ for _ in range(0,int(m)):
     d['B'].append(input())
 
 for _ in d['B']:
-    print(_)
+    #print(_)
     s = str("")
+    if _ in d['A']
+    i = 1
     for x in d['A']:
         if _ == x:
-            s = " " + x
-    print(s)
-print(len(d))
-print(d['A'])
-print(d['A'][0])
-print('a' in d['A'])
+            s = s + " " + str(i)
+        
+        i += 1
+    print(s.strip())
+#print(len(d))
+#print(d['A'])
+#print(d['A'][0])
+#print('a' in d['A'])
