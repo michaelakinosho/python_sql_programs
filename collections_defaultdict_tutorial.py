@@ -10,14 +10,15 @@ for _ in range(0,int(m)):
 
 for _ in d['B']:
     #print(_)
-    s = str("")
-    if _ in d['A']
-    i = 1
-    for x in d['A']:
-        if _ == x:
-            s = s + " " + str(i)
-        
-        i += 1
+    if _ in d['A']:
+        s = str("")
+        i = 1
+        for x in d['A']:
+            if _ == x:
+                s = s + " " + str(i)
+            i += 1
+    else:
+        s = "-1"
     print(s.strip())
 #print(len(d))
 #print(d['A'])
