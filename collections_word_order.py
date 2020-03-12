@@ -9,5 +9,3 @@ s_list = list(c.values())
 #print(s_list)
 
 print(*(n for n in s_list), sep = " ")
-#print(*((n) for n in s_list), sep = " ")
-#print(*((n) for n in s), sep = " ")
