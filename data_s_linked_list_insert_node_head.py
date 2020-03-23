@@ -26,7 +26,6 @@ def print_singly_linked_list(node, sep, fptr):
             fptr.write(sep)
 
 # Complete the insertNodeAtHead function below.
-
 #
 # For your reference:
 #
