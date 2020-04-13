@@ -23,10 +23,14 @@ def countTriplets(arr, r):
     print(cnt)
     list_cnt = list(cnt.items())
     if len(cnt) == 1:
+        pass
 
     elif len(cnt) == 2:
+        pass
 
     elif len(cnt) > 2:
+        pass
+        
     i = 0
     while i < len(list_cnt)-2:
         max_count += max(cnt.get(list_cnt[i][0]),cnt.get(list_cnt[i+1][0]),cnt.get(list_cnt[i+2][0]))
