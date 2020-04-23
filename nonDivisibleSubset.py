@@ -15,45 +15,59 @@ import sys
 #  2. INTEGER_ARRAY s
 #
 
-def nonDivisibleSubset(k, s, i):
+def nonDivisibleSubset(k, s):
     # Write your code here
+    if k == 1:
+        return(1)
 
-    #s.sort()
-    my_list = list()
-    j = 0
-    print(s)
-    while j < i+ 1:
-        my_list.append(s[j])
-        j += 1
+    from itertools import combinations
 
-    j = i + 1
-    while j < len(s):
-        if (s[i]+s[j])%k != 0:
-            my_list.append(s[j])
-        j += 1
+    s = list(set(s))
+    #print("Set: ",s)
+    max_len = []
+    i = len(s)
+    while i > -1:
+        if len(max_len) >= i:
+            return(len(max_len))
 
-    return(k,my_list,i)
+        s_subset = combinations(s, i)
+        for n in s_subset:
+            #print("S_subset:",n)
+            s_subset_combos = combinations(n,2)
+            for m in s_subset_combos:
+                if sum(m)%k != 0:
+                    if len(n) > len(max_len):
+                        max_len = n
+                else:
+                    if n == max_len:
+                        max_len = []
+                        break
+
+                #print("S_subset: ", n, "S_subset_combos:", m, sum(m)%k)
+
+        i -= 1
+    print(len(max_len))
+    return(len(max_len))
 
 if __name__ == '__main__':
+    fptr = open('py_output.txt', 'w')
+    py_input = open('py_input.txt','r')
+
+    first_multiple_input = list(map(int, py_input.readline().split(" ")))
+    s = list(map(int, py_input.readline().split(" ")))
+
     #fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    first_multiple_input = input().rstrip().split()
+    #first_multiple_input = input().rstrip().split()
 
     n = int(first_multiple_input[0])
 
     k = int(first_multiple_input[1])
 
-    s = list(map(int, input().rstrip().split()))
+    #s = list(map(int, input().rstrip().split()))
 
-    i = 0
+    result = nonDivisibleSubset(k, s)
 
-    ans = nonDivisibleSubset(k, s, i)
-    while i < len(ans[1]):
-        print(ans[1])
-        ans = nonDivisibleSubset(k,ans[1],i)
-        i += 1
-    print(ans)
-    #print(result)
+    fptr.write(str(result) + '\n')
 
-    #fptr.write(str(result) + '\n')
-    #fptr.close()
+    fptr.close()
