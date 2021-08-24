@@ -5,4 +5,4 @@ Adding more Python projects
 My signature and contact details
 Written by: Michael Akinosho
 Email: michaelakinosho@moaadvisory.com
-LinkedIn: https://wwww.LinkedIn.com/in/michaelakinosho
+LinkedIn: https://wwww.LinkedIn.com/in/michael-akinosho
