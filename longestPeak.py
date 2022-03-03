@@ -41,14 +41,17 @@ def longestPeak(array):
             #myList.append(tempList)
             j += 1
         if array[j-1] > array[j]:
-            if direction == "down":
+            if direction == "down" or direction == "peak":
+                direction = "down"
                 tempList.append(array[j])
-        if len(tempList) > len(myList) and len(tempList) > 2:
+        if len(tempList) > len(myList) and len(tempList) > 2 and direction == "down":
             myList = tempList
         i += 1
-
-    return myList
-  
+    print(myList)
+    return len(myList)
 
 arr = [1,2,3,3,4,0,10,6,5,-1,-3,2,3]
+print(longestPeak(arr))
+
+arr = [5,4,3,2,1,2,10,12]
 print(longestPeak(arr))
