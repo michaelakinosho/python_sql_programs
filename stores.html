@@ -1,0 +1,77 @@
+<h1>Level 0 - Task Menu</h1>
+<h3>Level 1 - Actions</h3>
+<ol>
+    <li>Add Task
+        <ol>Task requester needs ability to select form types and then proceed to add:
+            <li>Todos</li>
+            <li>Meetings</li>
+            <li>Phone calls</li>
+        </ol>
+        
+    </li>
+    <li>Edit Task
+        <ol>List of tasks that can be edited will be presented</ol>
+        <ol>Exclude tasks that have already been archived</ol>
+    </li>
+    <li>Archive Task
+        <ol>List of task that can be archived will be presented</ol>
+    </li>
+    <li>Show Archived Tasks</li>
+    <li>Show ALL Tasks
+        <ol>Add checkbox to include Archived tasks in resulted list</ol>
+    </li>
+</ol>
+
+<h1>Required Task Detail</h1>
+<h3>Fields that need to be captured within tasks</h3>
+<h3>Three types of task have been defined:</h3>
+    <ol>Types of Tasks:
+        <li>Todos</li>
+        <li>Meetings</li>
+        <li>Phone Calls</li>
+    </ol>
+<h3> Todos Task type is the basic task type, and requires the following fields:</h3>
+    <ol>
+        <li>Title</li>
+        <li>Description</li>
+        <li>Due Date and Time are required e.g. July 1, 2022 11:50 pm</li>
+        <li>Priority; use a dropdown</li>
+            <ol>
+                <li>Low</li>
+                <li>Medium</li>
+                <li>High</li>
+            </ol>
+        <li>Status</li>
+            <ol>
+                <li>Unstarted</li>
+                <li>In Progress</li>
+                <li>Completed</li>
+                <li>Discharged</li>
+                    <ol>Question to customer and team lead; Will this flag be set by clicking the task as archived or user has to set this value</ol>
+            </ol>
+        <li>Assignees</li>
+            <ol>Assignees should be listed in two textboxes:
+                <li>Primary Assignee (One person only)</li>
+                <li>Secondary Assignees</li>
+                <li>Relationship of Assignees to Tasks Needs to be handled in a Many-To-Many Table</li>
+            </ol>
+        <li>Contact Name</li>
+        <li>Contact URL</li>
+    </ol>
+
+<h3>Meeting (In-person, face-to-face, non-virtual) Task Type will include all of the fields of the Todos Task Type and the following fields:</h3>
+    <ol>
+        <li>Address of Meeting Location</li>
+        <li>City, State, and Zipcode</li>
+    </ol>
+
+
+<h3>Phone call (Zoom, virtual, remote) Task Type will include all of the fields of the Todos Task Type and the following fields:</h3>
+    <ol>
+        <li>Phone Number</li>
+        <li>Conference Call Number</li>
+        <li>Video Conference URL</li>
+    </ol>
+
+<h1>Security Access that Users have needs to defined within roles</h1>
+    <h2>If users can not access certain customers to schedule and book meetings</h2>
