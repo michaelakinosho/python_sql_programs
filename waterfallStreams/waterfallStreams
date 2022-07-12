@@ -1,0 +1,72 @@
+# Credit: source of solution is AlgoExpert provided solution
+def waterfallStreams(array, source):
+    rowAbove = array[0][:]
+    rowAbove[source] = -1
+    
+    #print(f"This is firstRow: 0 {rowAbove}")
+    for row in range(1, len(array)):
+        currentRow = array[row][:]
+        
+        for idx in range(len(rowAbove)):
+            valueAbove = rowAbove[idx]
+            
+            hasWaterAbove = valueAbove < 0
+            hasBlock = currentRow[idx] == 1
+            
+            #print(f"This is row: {row}, col: {idx}, rowAbove: {currentRow}")
+            #print(f"Row {row}, column {idx} Outside hasWaterAbove if statement {not hasWaterAbove}")
+            if not hasWaterAbove:
+                #print(f"Row {row}, column {idx} Inside hasWaterAbove if statement {not hasWaterAbove}")
+                continue
+            
+            #print(f"Row {row}, column {idx} Outside hasBlock if statement {not hasBlock}")
+            #print(hasBlock)
+            if not hasBlock:
+                #print(f"Row {row}, column {idx} Inside hasBlock if statement {not hasBlock}")
+                currentRow[idx] += valueAbove
+                continue
+            
+            splitWater = valueAbove / 2
+            
+            rightIdx = idx
+            while rightIdx + 1 < len(rowAbove):
+                rightIdx += 1
+                if rowAbove[rightIdx] == 1:
+                    break
+                if currentRow[rightIdx] != 1:
+                    currentRow[rightIdx] += splitWater
+                    break
+            
+            leftIdx = idx
+            while leftIdx  - 1 >= 0:
+                leftIdx -= 1
+                if rowAbove[leftIdx] == 1:
+                    break
+                if currentRow[leftIdx] != 1:
+                    currentRow[leftIdx] += splitWater
+                    break
+                
+        rowAbove = currentRow
+    
+    finalPercentages = list(map(lambda num: num * -100 if num < 0 else 0, rowAbove))
+    
+    return finalPercentages
+
+# array = [
+#     [0, 0, 0, 0, 0, 0, 0],
+#     [1, 0, 0, 0, 0, 0, 0],
+#     [0, 0, 0, 1, 0, 0, 0]]
+
+
+# array = [
+#     [0, 0, 0, 0, 0, 0, 0],
+#     [1, 0, 0, 0, 0, 0, 0],
+#     [0, 0, 1, 1, 1, 0, 0],
+#     [0, 0, 0, 0, 0, 0, 0],
+#     [1, 1, 1, 0, 0, 1, 0],
+#     [0, 0, 0, 0, 0, 0, 1],
+#     [0, 0, 0, 0, 0, 0, 0]]
+
+# source = 3
+
+# print(waterfallStreams(array, source))
