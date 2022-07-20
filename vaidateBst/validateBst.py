@@ -5,6 +5,7 @@ class BST:
         self.right = None
         
     
+# Credit: source of solution is AlgoExpert provided solution
 def validateBst(tree):
     return validateBstHelper(tree, float("-inf"), float("inf"))
 

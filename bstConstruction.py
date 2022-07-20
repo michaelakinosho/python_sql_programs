@@ -80,24 +80,40 @@ class BST:
             currentNode = currentNode.left
         return currentNode.value
         
+def inOrderTraverse(tree, array,i = 0):
+    
+    if tree is not None:
+        
+        inOrderTraverse(tree.left, array)
+        
+        array.append(tree.value)
+        
+        inOrderTraverse(tree.right, array)
+    return array
 
-myBST = BST(5)
-myBST.insert(16)
-myBST.insert(9)
-myBST.insert(37)
-myBST.insert(3)
-myBST.insert(45)
-myBST.insert(20)
-myBST.insert(21)
-myBST.insert(17)
-print(myBST.value)
-print(myBST.left.value)
-print(myBST.right.value)
-print(myBST.contains(22))
-myBST.remove(5)
-num = myBST.value
-print(num)
-myBST.remove(num)
-num = myBST.value
-print(num)
-print(myBST.right.value)
+def preOrderTraverse(tree, array):
+    if tree is not None:
+        array.append(tree.value)
+        preOrderTraverse(tree.left, array)
+        preOrderTraverse(tree.right, array)
+    return array
+
+def postOrderTraverse(tree, array):
+    if tree is not None:
+        postOrderTraverse(tree.left, array)
+        postOrderTraverse(tree.right, array)
+        array.append(tree.value)
+    return array
+
+myBST = BST(10)
+myBST.insert(15)
+myBST.insert(22)
+myBST.insert(5)
+myBST.insert(5)
+myBST.insert(2)
+myBST.insert(1)
+print(inOrderTraverse(myBST,[]))
+
+iBST = BST(1)
+iBST.insert(2)
+print(inOrderTraverse(iBST,[]))
