@@ -2,24 +2,26 @@
 def phoneNumberMnemonics(phoneNumber):
     currentMnemonic = ["0"] * len(phoneNumber)
     mnemonicsFound = []
-
-    phoneNumberMnemonicsHelper(0, phoneNumber, currentMnemonic, mnemonicsFound)
+    i = 0
+    print("\n")
+    phoneNumberMnemonicsHelper(0, i, phoneNumber, currentMnemonic, mnemonicsFound)
     return mnemonicsFound
 
-def phoneNumberMnemonicsHelper(idx, phoneNumber, currentMnemonic, mnemonicsFound):
+def phoneNumberMnemonicsHelper(idx, i, phoneNumber, currentMnemonic, mnemonicsFound):
     if idx == len(phoneNumber):
         mnemonic = "".join(currentMnemonic)
-        print(mnemonic)
         mnemonicsFound.append(mnemonic)
     else:
         digit = phoneNumber[idx]
         letters = DIGIT_LETTERS[digit]
+        
         for letter in letters:
-            print(letter)
+            print(f"i is: {i}, index is: {idx}  {letter}, {letters}")
+            i += 1
             currentMnemonic[idx] = letter
-            print(idx)
-            print(currentMnemonic)
-            phoneNumberMnemonicsHelper(idx + 1, phoneNumber, currentMnemonic, mnemonicsFound)
+            print(f"currentMnemonic is: {currentMnemonic}\n")
+            phoneNumberMnemonicsHelper(idx + 1, i, phoneNumber, currentMnemonic, mnemonicsFound)
+        print("\n")
 
 DIGIT_LETTERS = {
     "0": ["0"],
